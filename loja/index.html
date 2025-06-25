@@ -35,12 +35,12 @@
     <p>R$60,00/mês</p>
     <button onclick="comprar('VIP Nível Exclusivo')">Comprar</button>
   </div>
-  <footer>&copy; 2025 VIPs GH</footer>
+  <footer>&copy; 2023 VIPs GH</footer>
   <script>
     async function comprar(plano) {
       const discordID = document.getElementById('discordID').value.trim();
       if (!discordID) return alert("Insira seu ID do Discord!");
-      const res = await fetch("https://seu-backend.onrender.com/webhook-compra", {
+      const res = await fetch("https://vip-discord-bot-99rz.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ discordID, plano })
