@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIPs GH</title>
+  <style>
+    body { background-color: #1d1d1d; color: white; font-family: Arial; text-align: center; }
+    .plan { background: white; color: black; margin: 1rem; padding: 1rem; border-radius: 10px; }
+    input, button { margin-top: 10px; padding: 8px; width: 90%; }
+    footer { background: #c00000; padding: 1rem; position: fixed; bottom: 0; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>VIPs GH</h1>
+  <input type="text" id="discordID" placeholder="Digite seu ID do Discord" />
+  <div class="plan">
+    <h2>VIP Nível Clássico</h2>
+    <p>R$15,00/mês</p>
+    <button onclick="comprar('VIP Nível Clássico')">Comprar</button>
+  </div>
+  <div class="plan">
+    <h2>VIP Nível Ouro</h2>
+    <p>R$20,00/mês</p>
+    <button onclick="comprar('VIP Nível Ouro')">Comprar</button>
+  </div>
+  <div class="plan">
+    <h2>VIP Nível Platina</h2>
+    <p>R$30,00/mês</p>
+    <button onclick="comprar('VIP Nível Platina')">Comprar</button>
+  </div>
+  <div class="plan">
+    <h2>VIP Nível Exclusivo</h2>
+    <p>R$60,00/mês</p>
+    <button onclick="comprar('VIP Nível Exclusivo')">Comprar</button>
+  </div>
+  <footer>&copy; 2025 VIPs GH</footer>
+  <script>
+    async function comprar(plano) {
+      const discordID = document.getElementById('discordID').value.trim();
+      if (!discordID) return alert("Insira seu ID do Discord!");
+      const res = await fetch("https://seu-backend.onrender.com/webhook-compra", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ discordID, plano })
+      });
+      const msg = await res.text();
+      alert(msg);
+    }
+  </script>
+</body>
+</html>
