@@ -40,7 +40,7 @@
     async function comprar(plano) {
       const discordID = document.getElementById('discordID').value.trim();
       if (!discordID) return alert("Insira seu ID do Discord!");
-      const res = await fetch("https://vip-discord-bot-99rz.onrender.com", {
+      const res = await fetch("https://vip-discord-bot-99rz.onrender.com/webhook-compra", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ discordID, plano })
